@@ -15,6 +15,7 @@ public class Main {
 		System.out.println(puma);
 		cheetah.amwAnimals();
 		System.out.println(tiger.speak(""));
+		System.out.println();
 	}
 
 }
