@@ -32,3 +32,4 @@ public class MessageList {
 		return gson.toJson(new JsonMessages(list, n));
 	}
 }
+
