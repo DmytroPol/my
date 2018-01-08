@@ -20,14 +20,12 @@ public class AddServlet extends HttpServlet {
 
         Message msg = Message.fromJSON(bufStr);
         if (msg != null) {
-            // Serg
             if (msg.getText().substring(0, (msg.getText().length()<1?0:1)).equals("/")) {
                 System.out.println("COMMAND: " + msg.getText());
                 resp.setStatus(doCommand(msg));
             } else {
                 msgList.add(msg);
             }
-            // Serg
         } else {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }
@@ -46,17 +44,10 @@ public class AddServlet extends HttpServlet {
 
         return bos.toByteArray();
     }
-
-    /**
-     * Serg
-     *
-     * @param msg
-     * @return
-     */
+    
     private int doCommand(Message msg) {
         UserList userList = UserList.getInstance();
         MessageList msgList = MessageList.getInstance();
-//        ChatRooms chatRooms = ChatRooms.getInstance();
         int result = 200;
 
         String s = msg.getText();
@@ -83,42 +74,6 @@ public class AddServlet extends HttpServlet {
             case "/getsuser":
                 msgList.add(new Message("SYSTEM",msg.getFrom(),"Status of user "+params[1]+" is "+userList.getUser(params[1]).getStatus()));
                 break;
-//            case "/addroom":
-//                chatRooms.addRoom(params[1]);
-//                msgList.add(new Message("SYSTEM",msg.getFrom(),"Room "+params[1]+" added "+chatRooms));
-//                break;
-//            case "/joinroom":
-//                chatRooms.addUser(msg.getFrom(),params[1]);
-//                msgList.add(new Message("SYSTEM",msg.getFrom(),"You joined room "+params[1]+", members: "+chatRooms));
-//                break;
-//            case "/leaveroom":
-//                chatRooms.leaveUser(msg.getFrom(),params[1]);
-//                msgList.add(new Message("SYSTEM",msg.getFrom(),"You leaved room "+params[1]+", members: "+chatRooms));
-//                break;
-//            case "/showrooms":
-//                msgList.add(new Message("SYSTEM",msg.getFrom(),"Available rooms: "+chatRooms));
-//                break;
-//            case "/writetoroom":
-//                if (chatRooms.userIsInRoom(msg.getFrom(),params[1])) {
-//                    msgList.add(new Message(msg.getFrom(), params[1], lastparam, params[1]));
-//                } else {
-//                    msgList.add(new Message("SYSTEM",msg.getFrom(),"YOU SHOULD JOIN THE ROOM FIRST ! (/joinroom @roomName)"));
-//                }
-//                break;
-//            case  "/help":
-//                msgList.add(new Message("SYSTEM",msg.getFrom(),"\nAvailable commands:\n/pm @user @message\n"+
-//                        "/userlist\n"+
-//                        "/setstatus @status\n"+
-//                        "/getstatus @userName\n"+
-////                        "/addroom @roomName\n"+
-////                        "/joinroom @roomName\n"+
-////                        "/leaveroom @roomName\n"+
-////                        "/showrooms\n"+
-////                        "/writetoroom @roomName\n"+
-//                        "/help"));
-//                break;
-//            default:
-//                break;
         }
         System.out.println(msg.getText());
         return result;
