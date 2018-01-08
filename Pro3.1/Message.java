@@ -10,7 +10,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 public class Message {
-	private String room;
 	private Date date = new Date();
 	private String from;
 	private String to;
@@ -20,18 +19,11 @@ public class Message {
 		this.from = from;
 		this.text = text;
 	}
-    public Message(String from, String to, String text) { //Serg
+    public Message(String from, String to, String text) { 
         this.from = from;
         this.to = to;
         this.text = text;
     }
-
-//    public Message(String from, String to, String text,String room) { //Serg
-//        this.from = from;
-//        this.to = to;
-//        this.text = text;
-//        this.room = room;
-//    }
 
 	public String toJSON() {
 		Gson gson = new GsonBuilder().create();
@@ -99,6 +91,5 @@ public class Message {
 	public void setText(String text) {
 		this.text = text;
 	}
-//	public String getRoom() { return room;}
+	
 }
-
