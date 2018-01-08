@@ -3,10 +3,6 @@ package ua.kiev.prog;
 import java.util.Map;
 import java.util.TreeMap;
 
-
-/**
- * Serg
- */
 public class UserList {
 
     private static final UserList userList = new UserList();
@@ -27,14 +23,6 @@ public class UserList {
         if (!users.containsKey(userName)) {
             users.put(userName, new User(userName, password));
             message = "REGISTERED NEW USER - " + userName;}
-//        } else {
-//            if (users.get(userName).getPassword().equals(password)) {
-//                message = "USER " + userName + " LOGGED IN";
-//            } else {
-//                message = "USER " + userName + " LOGIN FAILED";
-//                result = 401;
-//            }
-//        }
         Message m = new Message("SYSTEM", message);
         msgList.add(m);
         return result;
