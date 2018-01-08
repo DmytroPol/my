@@ -15,3 +15,4 @@ public class JsonMessages {
         return Collections.unmodifiableList(list);
     }
 }
+
